@@ -69,6 +69,16 @@ FACTORIES(^{
 });
 ```
 
+#### Building stuff
+
+```objc
+LSUser *user = [LSUser build];
+
+user = [LSUser buildWithParams:@{@"password": @"secret", @"state": @"active"}];
+
+user = [LSUser build:@"suspended"];
+```
+
 ## Contributing
 
 1. Fork it
