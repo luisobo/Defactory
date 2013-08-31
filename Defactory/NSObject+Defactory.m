@@ -28,9 +28,9 @@
     self.properties[key] = object;
 }
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)mutableCopyWithZone:(NSZone *)zone {
     LSFactory *copy = [[LSFactory alloc] init];
-    copy.properties = [self.properties copy];
+    copy.properties = [self.properties mutableCopy];
     return copy;
 }
 
@@ -57,10 +57,13 @@ static void * LSFactoriesKey = &LSFactoriesKey;
 }
 
 + (void)define:(NSString *)name factory:(void(^)(LSFactory *factory))definition {
+    [self define:name parent:nil factory:definition];
+}
++ (void)define:(NSString *)name parent:(NSString *)parent factory:(void(^)(LSFactory *factory))definition {
     if (self.factories[name]) {
         [NSException raise:NSInvalidArgumentException format:@"Redefinition of factory '%@' for class '%@'", name, NSStringFromClass(self)];
     }
-    LSFactory *factory = [[LSFactory alloc] init];
+    LSFactory *factory = parent ? [self.factories[parent] mutableCopy] : [[LSFactory alloc] init];
     definition(factory);
     self.factories[name] = factory;
 }

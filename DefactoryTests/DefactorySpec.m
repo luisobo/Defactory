@@ -21,7 +21,7 @@ FACTORIES(^{
 });
 
 FACTORIES(^{
-    [LSUser define:@"suspended" factory:^(LSFactory *f) {
+    [LSUser define:@"suspended" parent:@"LSUser" factory:^(LSFactory *f) {
         f[@"state"] = @"suspended";
         f[@"loginCount"] = @2;
         f[@"somethingBool"] = @YES;
@@ -48,8 +48,9 @@ it(@"builds an object", ^{
     [[user.email should] equal:@"yeah@example.com"];
 
     user = [LSUser build:@"suspended"];
-    [[user.username should] beNil];
-    [[user.password should] beNil];
+    [[user.username should] equal:@"foo"];
+    [[user.password should] equal:@"hunter2"];
+    [[user.email should] equal:@"foo2@example.com"];
     [[user.state should] equal:@"suspended"];
     [[theValue(user.loginCount) should] equal:theValue(2)];
     [[theValue(user.somethingBool) should] beYes];
