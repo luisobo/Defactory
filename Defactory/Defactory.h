@@ -6,15 +6,5 @@
 //  Copyright (c) 2013 Luis Solano Bonet. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "Macros.h"
 #import "NSObject+Defactory.h"
-
-#define _MERGE(a,b)  a##b
-#define _LABEL(a) _MERGE(LSFactoryDefinition, a)
-#define _UNIQUE_NAME _LABEL(__COUNTER__)
-
-#define FACTORIES(definitions)\
-__attribute__((constructor))\
-static void _UNIQUE_NAME() {\
-    definitions();\
-}
