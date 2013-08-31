@@ -56,6 +56,9 @@ static void * LSFactoriesKey = &LSFactoriesKey;
 }
 
 + (void)define:(NSString *)name factory:(void(^)(LSFactory *factory))definition {
+    if (self.factories[name]) {
+        [NSException raise:NSInvalidArgumentException format:@"Redefinition of factory '%@' for class '%@'", name, NSStringFromClass(self)];
+    }
     LSFactory *factory = [[LSFactory alloc] init];
     definition(factory);
     self.factories[name] = factory;
