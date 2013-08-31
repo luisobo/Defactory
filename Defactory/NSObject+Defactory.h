@@ -19,6 +19,8 @@ id association(Class class);
 + (void)define:(NSString *)name factory:(void(^)(LSFactory *factory))definition;
 + (void)define:(NSString *)name parent:(NSString *)parent factory:(void(^)(LSFactory *factory))definition;
 + (instancetype)build;
-+ (instancetype)build:(NSString *)factoryName;
 + (instancetype)buildWithParams:(NSDictionary *)params;
++ (instancetype)build:(NSString *)factoryName;
++ (instancetype)build:(NSString *)factoryName params:(NSDictionary *)params;
+
 @end

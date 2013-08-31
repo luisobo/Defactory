@@ -66,6 +66,14 @@ it(@"builds an object", ^{
     [[dad.password should] equal:@"hunter2"];
     [[dad.state should] beNil];
     [[dad.email should] equal:@"foo4@example.com"];
+
+    user = [LSUser build:@"suspended" params:@{@"loginCount": @4}];
+    [[user.username should] equal:@"foo"];
+    [[user.password should] equal:@"hunter2"];
+    [[user.state should] equal:@"suspended"];
+    [[theValue(user.somethingBool) should] beYes];
+    [[theValue(user.loginCount) should] equal:theValue(4)];
+    [[user.email should] equal:@"foo5@example.com"];
 });
 
 SPEC_END

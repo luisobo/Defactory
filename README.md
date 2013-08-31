@@ -72,11 +72,18 @@ FACTORIES(^{
 #### Building stuff
 
 ```objc
+
+// Build an object with the default factory and params
 LSUser *user = [LSUser build];
 
+// Build an object with the default factory overriding some params.
 user = [LSUser buildWithParams:@{@"password": @"secret", @"state": @"active"}];
 
+// Build an object with a named factory.
 user = [LSUser build:@"suspended"];
+
+// Build an object with a named factory overriding some params.
+user = [LSUser build:@"suspended" params:@{@"loginCount": @4}];
 ```
 
 ## Contributing
