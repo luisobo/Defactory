@@ -5,6 +5,8 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *state;
+@property (nonatomic, assign) NSUInteger loginCount;
+@property (nonatomic, assign) BOOL somethingBool;
 @end
 @implementation LSUser
 @end
@@ -19,6 +21,8 @@ FACTORIES(^{
 FACTORIES(^{
     [LSUser define:@"suspended" factory:^(LSFactory *f) {
         f[@"state"] = @"suspended";
+        f[@"loginCount"] = @2;
+        f[@"somethingBool"] = @YES;
     }];
 });
 
@@ -34,11 +38,14 @@ it(@"builds an object", ^{
     [[user.username should] equal:@"foo"];
     [[user.password should] equal:@"secret"];
     [[user.state should] equal:@"active"];
+    [[theValue(user.loginCount) should] equal:theValue(0)];
 
     user = [LSUser build:@"suspended"];
     [[user.username should] beNil];
     [[user.password should] beNil];
     [[user.state should] equal:@"suspended"];
+    [[theValue(user.loginCount) should] equal:theValue(2)];
+    [[theValue(user.somethingBool) should] beYes];
 });
 
 SPEC_END
