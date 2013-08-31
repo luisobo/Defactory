@@ -7,4 +7,5 @@
 //
 
 #import "Macros.h"
+#import "LSSequence.h"
 #import "NSObject+Defactory.h"

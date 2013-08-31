@@ -10,6 +10,7 @@
 		27A285B1DBA94A3AB42DD107 /* libPods-DefactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC9FEB878B2A4E148E9EBBDB /* libPods-DefactoryTests.a */; };
 		A021580017D18ED7004514FC /* DefactorySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A02157FF17D18ED7004514FC /* DefactorySpec.m */; };
 		A021580317D19059004514FC /* NSObject+Defactory.m in Sources */ = {isa = PBXBuildFile; fileRef = A021580217D19059004514FC /* NSObject+Defactory.m */; };
+		A021580717D19EC3004514FC /* LSSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = A021580617D19EC3004514FC /* LSSequence.m */; };
 		A0EB54D517D18E0D00554703 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EB54D417D18E0D00554703 /* Foundation.framework */; };
 		A0EB54DA17D18E0D00554703 /* Defactory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A0EB54D917D18E0D00554703 /* Defactory.h */; };
 		A0EB54E417D18E0D00554703 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EB54E317D18E0D00554703 /* SenTestingKit.framework */; };
@@ -47,6 +48,8 @@
 		A021580117D19059004514FC /* NSObject+Defactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Defactory.h"; sourceTree = "<group>"; };
 		A021580217D19059004514FC /* NSObject+Defactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Defactory.m"; sourceTree = "<group>"; };
 		A021580417D19D5C004514FC /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		A021580517D19EC3004514FC /* LSSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSSequence.h; sourceTree = "<group>"; };
+		A021580617D19EC3004514FC /* LSSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSSequence.m; sourceTree = "<group>"; };
 		A0EB54D117D18E0D00554703 /* libDefactory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDefactory.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EB54D417D18E0D00554703 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A0EB54D817D18E0D00554703 /* Defactory-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Defactory-Prefix.pch"; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				A021580117D19059004514FC /* NSObject+Defactory.h */,
 				A021580217D19059004514FC /* NSObject+Defactory.m */,
 				A021580417D19D5C004514FC /* Macros.h */,
+				A021580517D19EC3004514FC /* LSSequence.h */,
+				A021580617D19EC3004514FC /* LSSequence.m */,
 			);
 			path = Defactory;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A021580317D19059004514FC /* NSObject+Defactory.m in Sources */,
+				A021580717D19EC3004514FC /* LSSequence.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, assign) NSUInteger loginCount;
 @property (nonatomic, assign) BOOL somethingBool;
+@property (nonatomic, strong) NSString *email;
 @end
 @implementation LSUser
 @end
@@ -15,6 +16,7 @@ FACTORIES(^{
     [LSUser defineFactory:^(LSFactory *f) {
         f[@"username"] = @"foo";
         f[@"password"] = @"hunter2";
+        f[@"email"] = sequence(^(NSUInteger i) { return [NSString stringWithFormat:@"foo%d@example.com", i]; });
     }];
 });
 
@@ -33,12 +35,17 @@ it(@"builds an object", ^{
     [[user.username should] equal:@"foo"];
     [[user.password should] equal:@"hunter2"];
     [[user.state should] beNil];
+    [[user.email should] equal:@"foo0@example.com"];
 
     user = [LSUser buildWithParams:@{@"password": @"secret", @"state": @"active"}];
     [[user.username should] equal:@"foo"];
     [[user.password should] equal:@"secret"];
     [[user.state should] equal:@"active"];
     [[theValue(user.loginCount) should] equal:theValue(0)];
+    [[user.email should] equal:@"foo1@example.com"];
+
+    user = [LSUser buildWithParams:@{@"email": @"yeah@example.com"}];
+    [[user.email should] equal:@"yeah@example.com"];
 
     user = [LSUser build:@"suspended"];
     [[user.username should] beNil];

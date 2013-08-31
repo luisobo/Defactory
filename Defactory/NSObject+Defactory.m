@@ -8,6 +8,7 @@
 
 #import "NSObject+Defactory.h"
 #import <objc/runtime.h>
+#import "LSSequence.h"
 
 @interface LSFactory ()
 @property (nonatomic, strong) NSMutableDictionary *properties;
@@ -86,7 +87,11 @@ static void * LSFactoriesKey = &LSFactoriesKey;
     NSMutableDictionary *properties = [factory.properties mutableCopy];
     [properties addEntriesFromDictionary:params];
     for (NSString *key in properties) {
-        [object setValue:properties[key] forKey:key];
+        id value = properties[key];
+        if ([value isKindOfClass:[LSSequence class]]) {
+            value = [value next];
+        }
+        [object setValue:value forKey:key];
     }
     return object;
 }
