@@ -10,15 +10,22 @@
 #import <objc/runtime.h>
 #import "LSSequence.h"
 
+id association(Class class) {
+    return [[class performSelector:@selector(factories)] objectForKey:[class description]];
+}
+
 @interface LSFactory ()
+@property (nonatomic, strong) Class klass;
 @property (nonatomic, strong) NSMutableDictionary *properties;
+
 @end
 
 @implementation LSFactory
 
-- (instancetype)init {
+- (instancetype)initWithClass:(Class)klass {
     self = [super init];
     if (self) {
+        _klass = klass;
         _properties = [NSMutableDictionary dictionary];
     }
     return self;
@@ -29,10 +36,33 @@
 }
 
 - (id)mutableCopyWithZone:(NSZone *)zone {
-    LSFactory *copy = [[LSFactory alloc] init];
+    LSFactory *copy = [[LSFactory alloc] initWithClass:[self klass]];
     copy.properties = [self.properties mutableCopy];
     return copy;
 }
+
+- (id)build {
+    return [self buildWithParams:nil];
+}
+
+- (id)buildWithParams:(NSDictionary *)params {
+    params = params ?: @{};
+    NSObject *object = [[self.klass alloc] init];
+    NSMutableDictionary *properties = [self.properties mutableCopy];
+    [properties addEntriesFromDictionary:params];
+    for (NSString *key in properties) {
+        id value = properties[key];
+        if ([value isKindOfClass:[LSSequence class]]) {
+            value = [value next];
+        }
+        if ([value isKindOfClass:[LSFactory class]]) {
+            value = [value build];
+        }
+        [object setValue:value forKey:key];
+    }
+    return object;
+}
+
 
 @end
 
@@ -63,7 +93,7 @@ static void * LSFactoriesKey = &LSFactoriesKey;
     if (self.factories[name]) {
         [NSException raise:NSInvalidArgumentException format:@"Redefinition of factory '%@' for class '%@'", name, NSStringFromClass(self)];
     }
-    LSFactory *factory = parent ? [self.factories[parent] mutableCopy] : [[LSFactory alloc] init];
+    LSFactory *factory = parent ? [self.factories[parent] mutableCopy] : [[LSFactory alloc] initWithClass:self];
     definition(factory);
     self.factories[name] = factory;
 }
@@ -86,17 +116,7 @@ static void * LSFactoriesKey = &LSFactoriesKey;
         [NSException raise:NSInvalidArgumentException format:@"No factory '%@' defined for class %@", factoryName, NSStringFromClass(self)];
     }
 
-    NSObject *object = [[self alloc] init];
-    NSMutableDictionary *properties = [factory.properties mutableCopy];
-    [properties addEntriesFromDictionary:params];
-    for (NSString *key in properties) {
-        id value = properties[key];
-        if ([value isKindOfClass:[LSSequence class]]) {
-            value = [value next];
-        }
-        [object setValue:value forKey:key];
-    }
-    return object;
+    return [factory buildWithParams:params];
 }
 
 @end

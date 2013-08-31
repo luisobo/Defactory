@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+id association(Class class);
+
 @interface LSFactory : NSObject<NSMutableCopying>
 - (void)setObject:(id)object forKeyedSubscript:(id<NSCopying>)key;
 @end

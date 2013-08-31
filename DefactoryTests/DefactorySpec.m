@@ -8,6 +8,7 @@
 @property (nonatomic, assign) NSUInteger loginCount;
 @property (nonatomic, assign) BOOL somethingBool;
 @property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) LSUser *dad;
 @end
 @implementation LSUser
 @end
@@ -25,6 +26,10 @@ FACTORIES(^{
         f[@"state"] = @"suspended";
         f[@"loginCount"] = @2;
         f[@"somethingBool"] = @YES;
+    }];
+
+    [LSUser define:@"son" parent:@"LSUser" factory:^(LSFactory *f) {
+        f[@"dad"] = association([LSUser class]);
     }];
 });
 
@@ -54,6 +59,13 @@ it(@"builds an object", ^{
     [[user.state should] equal:@"suspended"];
     [[theValue(user.loginCount) should] equal:theValue(2)];
     [[theValue(user.somethingBool) should] beYes];
+
+    user = [LSUser build:@"son"];
+    LSUser *dad = user.dad;
+    [[dad.username should] equal:@"foo"];
+    [[dad.password should] equal:@"hunter2"];
+    [[dad.state should] beNil];
+    [[dad.email should] equal:@"foo4@example.com"];
 });
 
 SPEC_END
