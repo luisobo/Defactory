@@ -58,17 +58,29 @@ static void * LSFactoriesKey = &LSFactoriesKey;
 }
 
 + (void)defineFactory:(void(^)(LSFactory *factory))definition {
+    [self define:NSStringFromClass(self) factory:definition];
+}
+
++ (void)define:(NSString *)name factory:(void(^)(LSFactory *factory))definition {
     LSFactory *factory = [[LSFactory alloc] init];
     definition(factory);
-    self.factories[NSStringFromClass(self)] = factory;
+    self.factories[name] = factory;
 }
 
 + (instancetype)build {
-    return [self buildWithParams:@{}];
+    return [self build:NSStringFromClass(self)];
+}
+
++ (instancetype)build:(NSString *)factoryName {
+    return [self build:factoryName params:@{}];
 }
 
 + (instancetype)buildWithParams:(NSDictionary *)params {
-    LSFactory *factory = self.factories[NSStringFromClass(self)];
+    return [self build:NSStringFromClass(self) params:params];
+}
+
++ (instancetype)build:(NSString *)factoryName params:(NSDictionary *)params {
+    LSFactory *factory = self.factories[factoryName];
     if (!factory) {
         [NSException raise:NSInvalidArgumentException format:@"No factory defined for class %@", NSStringFromClass(self)];
     }

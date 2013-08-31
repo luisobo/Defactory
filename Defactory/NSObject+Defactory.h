@@ -14,6 +14,8 @@
 
 @interface NSObject (Defactory)
 + (void)defineFactory:(void(^)(LSFactory *factory))definition;
++ (void)define:(NSString *)name factory:(void(^)(LSFactory *factory))definition;
 + (instancetype)build;
++ (instancetype)build:(NSString *)factoryName;
 + (instancetype)buildWithParams:(NSDictionary *)params;
 @end
