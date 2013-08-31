@@ -14,7 +14,9 @@ FACTORIES(^{
         f[@"username"] = @"foo";
         f[@"password"] = @"hunter2";
     }];
+});
 
+FACTORIES(^{
     [LSUser define:@"suspended" factory:^(LSFactory *f) {
         f[@"state"] = @"suspended";
     }];
@@ -24,7 +26,6 @@ SPEC_BEGIN(DefactorySpec)
 
 it(@"builds an object", ^{
     LSUser *user = [LSUser build];
-
     [[user.username should] equal:@"foo"];
     [[user.password should] equal:@"hunter2"];
     [[user.state should] beNil];

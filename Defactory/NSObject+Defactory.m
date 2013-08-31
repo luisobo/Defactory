@@ -9,12 +9,6 @@
 #import "NSObject+Defactory.h"
 #import <objc/runtime.h>
 
-__attribute__((constructor))
-static void PIXFactoriesConstruct() {
-    Class class = NSClassFromString(@"LSFactories");
-    [class performSelector:@selector(loadFactoryDefinitions)];
-}
-
 @interface LSFactory ()
 @property (nonatomic, strong) NSMutableDictionary *properties;
 @end
@@ -82,7 +76,7 @@ static void * LSFactoriesKey = &LSFactoriesKey;
 + (instancetype)build:(NSString *)factoryName params:(NSDictionary *)params {
     LSFactory *factory = self.factories[factoryName];
     if (!factory) {
-        [NSException raise:NSInvalidArgumentException format:@"No factory defined for class %@", NSStringFromClass(self)];
+        [NSException raise:NSInvalidArgumentException format:@"No factory '%@' defined for class %@", factoryName, NSStringFromClass(self)];
     }
 
     NSObject *object = [[self alloc] init];

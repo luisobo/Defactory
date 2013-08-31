@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+Defactory.h"
 
+#define _MERGE(a,b)  a##b
+#define _LABEL(a) _MERGE(LSFactoryDefinition, a)
+#define _UNIQUE_NAME _LABEL(__COUNTER__)
+
 #define FACTORIES(definitions)\
-@interface LSFactories : NSObject\
-\
-@end\
-@implementation LSFactories\
-+ (void)loadFactoryDefinitions {\
+__attribute__((constructor))\
+static void _UNIQUE_NAME() {\
     definitions();\
-}\
-@end
+}
