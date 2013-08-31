@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSObject+Defactory.h"
 
-@interface Defactory : NSObject
-
+#define FACTORIES(definitions)\
+@interface LSFactories : NSObject\
+\
+@end\
+@implementation LSFactories\
++ (void)loadFactoryDefinitions {\
+    definitions();\
+}\
 @end

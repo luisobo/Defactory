@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		27A285B1DBA94A3AB42DD107 /* libPods-DefactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC9FEB878B2A4E148E9EBBDB /* libPods-DefactoryTests.a */; };
+		A021580017D18ED7004514FC /* DefactorySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A02157FF17D18ED7004514FC /* DefactorySpec.m */; };
+		A021580317D19059004514FC /* NSObject+Defactory.m in Sources */ = {isa = PBXBuildFile; fileRef = A021580217D19059004514FC /* NSObject+Defactory.m */; };
 		A0EB54D517D18E0D00554703 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EB54D417D18E0D00554703 /* Foundation.framework */; };
 		A0EB54DA17D18E0D00554703 /* Defactory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A0EB54D917D18E0D00554703 /* Defactory.h */; };
-		A0EB54DC17D18E0D00554703 /* Defactory.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EB54DB17D18E0D00554703 /* Defactory.m */; };
 		A0EB54E417D18E0D00554703 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EB54E317D18E0D00554703 /* SenTestingKit.framework */; };
 		A0EB54E617D18E0D00554703 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EB54E517D18E0D00554703 /* UIKit.framework */; };
 		A0EB54E717D18E0D00554703 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EB54D417D18E0D00554703 /* Foundation.framework */; };
 		A0EB54EA17D18E0D00554703 /* libDefactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EB54D117D18E0D00554703 /* libDefactory.a */; };
 		A0EB54F017D18E0D00554703 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0EB54EE17D18E0D00554703 /* InfoPlist.strings */; };
-		A0EB54F317D18E0D00554703 /* DefactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EB54F217D18E0D00554703 /* DefactoryTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,18 +43,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A02157FF17D18ED7004514FC /* DefactorySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefactorySpec.m; sourceTree = "<group>"; };
+		A021580117D19059004514FC /* NSObject+Defactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Defactory.h"; sourceTree = "<group>"; };
+		A021580217D19059004514FC /* NSObject+Defactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Defactory.m"; sourceTree = "<group>"; };
 		A0EB54D117D18E0D00554703 /* libDefactory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDefactory.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EB54D417D18E0D00554703 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A0EB54D817D18E0D00554703 /* Defactory-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Defactory-Prefix.pch"; sourceTree = "<group>"; };
 		A0EB54D917D18E0D00554703 /* Defactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defactory.h; sourceTree = "<group>"; };
-		A0EB54DB17D18E0D00554703 /* Defactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Defactory.m; sourceTree = "<group>"; };
 		A0EB54E217D18E0D00554703 /* DefactoryTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefactoryTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EB54E317D18E0D00554703 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A0EB54E517D18E0D00554703 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A0EB54ED17D18E0D00554703 /* DefactoryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DefactoryTests-Info.plist"; sourceTree = "<group>"; };
 		A0EB54EF17D18E0D00554703 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A0EB54F117D18E0D00554703 /* DefactoryTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefactoryTests.h; sourceTree = "<group>"; };
-		A0EB54F217D18E0D00554703 /* DefactoryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefactoryTests.m; sourceTree = "<group>"; };
 		CA04CA840812431A95620EEA /* Pods-DefactoryTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DefactoryTests.xcconfig"; path = "Pods/Pods-DefactoryTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		FC9FEB878B2A4E148E9EBBDB /* libPods-DefactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DefactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -117,9 +117,10 @@
 		A0EB54D617D18E0D00554703 /* Defactory */ = {
 			isa = PBXGroup;
 			children = (
-				A0EB54D917D18E0D00554703 /* Defactory.h */,
-				A0EB54DB17D18E0D00554703 /* Defactory.m */,
 				A0EB54D717D18E0D00554703 /* Supporting Files */,
+				A0EB54D917D18E0D00554703 /* Defactory.h */,
+				A021580117D19059004514FC /* NSObject+Defactory.h */,
+				A021580217D19059004514FC /* NSObject+Defactory.m */,
 			);
 			path = Defactory;
 			sourceTree = "<group>";
@@ -135,9 +136,8 @@
 		A0EB54EB17D18E0D00554703 /* DefactoryTests */ = {
 			isa = PBXGroup;
 			children = (
-				A0EB54F117D18E0D00554703 /* DefactoryTests.h */,
-				A0EB54F217D18E0D00554703 /* DefactoryTests.m */,
 				A0EB54EC17D18E0D00554703 /* Supporting Files */,
+				A02157FF17D18ED7004514FC /* DefactorySpec.m */,
 			);
 			path = DefactoryTests;
 			sourceTree = "<group>";
@@ -281,7 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0EB54DC17D18E0D00554703 /* Defactory.m in Sources */,
+				A021580317D19059004514FC /* NSObject+Defactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0EB54F317D18E0D00554703 /* DefactoryTests.m in Sources */,
+				A021580017D18ED7004514FC /* DefactorySpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
