@@ -11,7 +11,7 @@ Objective-C object factory for testing.
 * Tested.
 
 ## Installation
-### [Coming soon] As a [CocoaPod](http://cocoapods.org/)
+As a [CocoaPod](http://cocoapods.org/)
 Just add this to your Podfile
 ```ruby
 pod 'Defactory'
