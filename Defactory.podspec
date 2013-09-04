@@ -1,11 +1,9 @@
 Pod::Spec.new do |s|
   s.name         = "Defactory"
   s.version      = "0.1"
-  s.summary      = "Objective-C object factory for your tests."
+  s.summary      = "The simplest way to build test objects."
 
   s.description  = <<-DESC
-                   Create test object, the right way.
-
                    * Define factories once, build everywhere.
                    * Named factories.
                    * Sequences.
